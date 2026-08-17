@@ -25,6 +25,12 @@ AMP Lab relies on and/or is designed to work with data and mechanics from severa
   AMP item database / reference resource used by AMP Lab for detailed item information and mechanic data.  
   Website: https://ampis.spheral.com
 
+## Free project & creator support
+
+**AMP Lab is free to download and use, and it is intended to remain free.**
+
+AMP Lab does not currently ask for or accept donations. If you would like to financially support the ecosystem behind AMP Lab, please consider supporting the original creators listed above directly through any official donation or support links they choose to publish.
+
 ## Ownership and attribution
 
 AMP Lab does **not** claim ownership of the mods, assets, item designs, ruleset implementations, databases, data, names, or other original work created by the authors and projects above.
