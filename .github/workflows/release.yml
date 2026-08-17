@@ -1,7 +1,7 @@
 name: Publish Windows Release
 
-# v7.3.5 is the only accepted baseline for this repository.
-# Automatic EXE building is intentionally disabled until the v7.3.5 Go backend
+# v7.4.8 is the only accepted baseline for this repository.
+# Automatic EXE building is intentionally disabled until the v7.4.8 Go backend
 # has been reconstructed and validated. Do not substitute older source snapshots.
 on:
   workflow_dispatch:
@@ -20,8 +20,8 @@ jobs:
         shell: pwsh
         run: |
           $version = (Get-Content VERSION -Raw).Trim()
-          if ($version -ne "7.3.5") {
+          if ($version -ne "7.4.8") {
             throw "Unexpected AMP Lab baseline: $version"
           }
-          Write-Host "AMP Lab baseline: v$version Tooltip Restore Fix"
-          Write-Host "Automatic EXE build/release remains disabled until the v7.3.5 backend is reproducible."
+          Write-Host "AMP Lab baseline: v$version Raw Arsenal / Direct Shards"
+          Write-Host "Automatic EXE build/release remains disabled until the v7.4.8 backend is reproducible."
