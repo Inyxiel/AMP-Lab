@@ -24,6 +24,12 @@ The original Go source code is **not** embedded as source text in the compiled e
 
 Stable Windows builds are published through GitHub Releases. The current public baseline is **v7.3.5 — Tooltip Restore Fix**.
 
+## Free project & supporting the creators
+
+**AMP Lab is free to download and use, and it is intended to remain free.**
+
+AMP Lab does not currently ask for or accept donations. If you would like to financially support the ecosystem that makes this project possible, please consider supporting the original mod and community-resource creators directly through any official donation or support links they choose to provide.
+
 ## Credits & Acknowledgements
 
 AMP Lab is an independent community project and is not an official project of the mod creators or community resources it supports.
