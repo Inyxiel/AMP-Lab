@@ -1,0 +1,37 @@
+name: Validate AMP Lab Baseline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify version baseline
+        shell: bash
+        run: |
+          test "$(tr -d '\r\n' < VERSION)" = "7.3.5"
+
+      - name: Validate recovery tool syntax
+        run: python -m py_compile tools/extract_v735_frontend.py
+
+      - name: Reject private or third-party development inputs
+        shell: bash
+        run: |
+          bad=$(git ls-files | grep -Ei '(^|/)([^/]*\.pak|[^/]*\.lsv|\.env($|\.)|amp_lab_runtime_snapshot\.json|amp_lab_app_sync\.json|amp_lab_bridge_status\.json|ampis_full_details.*\.json|AMP Items & Shards.*\.xlsx)$' || true)
+          if [ -n "$bad" ]; then
+            echo "Forbidden development inputs are tracked:"
+            echo "$bad"
+            exit 1
+          fi
+
+      - name: Verify baseline checksum declaration
+        shell: bash
+        run: |
+          grep -q '2b7f75480c27072c9447624aa6356c9cc217f922cc818b95a20766e188c2ae5c  AMP20Lab_v7.3.5_Tooltip-Restore-Fix.exe' checksums/SHA256SUMS.txt
