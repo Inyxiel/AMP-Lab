@@ -4,25 +4,25 @@ Baldur's Gate 3 build and inventory optimizer focused on real party/inventory da
 
 ## Current baseline
 
-**AMP Lab v7.3.5 — Tooltip Restore Fix**
+**AMP Lab v7.4.8 — Raw Arsenal / Direct Shards**
 
-This repository is intentionally based only on the v7.3.5 Windows executable. Older source snapshots are not being mixed into this codebase.
+This repository is intentionally based only on the current v7.4.8 Windows executable. Older source snapshots are not being mixed into this codebase.
 
 Current verified binary:
 
-- File: `AMP20Lab_v7.3.5_Tooltip-Restore-Fix.exe`
-- SHA-256: `2b7f75480c27072c9447624aa6356c9cc217f922cc818b95a20766e188c2ae5c`
+- File: `AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe`
+- SHA-256: `b4367fc3ab6c46123c31b19d2f795e5b765e079179d618b954dcc19ca1ccd571`
 - Size: `36,457,984` bytes
 
 ## Recovery status
 
-The v7.3.5 executable contains recoverable embedded frontend resources. The recovery tooling in this repository extracts the exact embedded HTML and gzip/base64 JavaScript payload from that binary.
+The v7.4.8 executable contains recoverable embedded frontend resources. The recovery tooling in this repository extracts the exact embedded HTML and gzip/base64 JavaScript payload from that binary.
 
 The original Go source code is **not** embedded as source text in the compiled executable, so a reproducible automatic Windows build is not enabled yet. We will not substitute older source code just to make the build appear reproducible.
 
 ## Releases
 
-Stable Windows builds are published through GitHub Releases. The current public baseline is **v7.3.5 — Tooltip Restore Fix**.
+Stable Windows builds are published through GitHub Releases. The repository baseline is now **v7.4.8 — Raw Arsenal / Direct Shards**.
 
 ## Free project & supporting the creators
 
