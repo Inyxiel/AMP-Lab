@@ -22,7 +22,20 @@ The original Go source code is **not** embedded as source text in the compiled e
 
 ## Releases
 
-GitHub Release automation will be enabled only after the v7.3.5 backend/build path is reproducible. Until then, release publishing remains intentionally manual/safe.
+Stable Windows builds are published through GitHub Releases. The current public baseline is **v7.3.5 — Tooltip Restore Fix**.
+
+## Credits & Acknowledgements
+
+AMP Lab is an independent community project and is not an official project of the mod creators it supports.
+
+Special thanks and full credit to:
+
+- **Paramonov / Paramonov95** — Ancient Mega Pack (AMP)
+- **Paramonov** — Ancient Mega Pack Plus (AMP+)
+- **Paramonov** — Ancient Mega Pack + DnD 5.5e BEYOND compatibility patch
+- **Yoonmoonsik** — DnD 5.5e All-in-One BEYOND
+
+AMP Lab does not claim ownership of their mods, assets, data, item designs, or ruleset implementations. See [CREDITS.md](CREDITS.md) for full attribution and links to the original projects.
 
 ## Third-party data
 
