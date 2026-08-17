@@ -1,0 +1,33 @@
+name: Publish Windows Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify release executable exists
+        shell: pwsh
+        run: |
+          $files = Get-ChildItem -Path dist -Filter *.exe -File -ErrorAction SilentlyContinue
+          if (-not $files) {
+            throw "No .exe found in dist/. Add/build the Windows executable before publishing a release."
+          }
+          $files | ForEach-Object { Write-Host "Release asset: $($_.FullName)" }
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.exe
+          generate_release_notes: true
