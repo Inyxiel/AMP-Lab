@@ -1,9 +1,9 @@
 name: Publish Windows Release
 
+# Automatic tag publishing will be enabled once the real AMP Lab source/build command
+# is added to this repository. For now this workflow is manual-only so tags cannot
+# accidentally trigger a broken release.
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
 
 permissions:
@@ -17,17 +17,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify release executable exists
+      - name: Source/build setup required
         shell: pwsh
         run: |
-          $files = Get-ChildItem -Path dist -Filter *.exe -File -ErrorAction SilentlyContinue
-          if (-not $files) {
-            throw "No .exe found in dist/. Add/build the Windows executable before publishing a release."
-          }
-          $files | ForEach-Object { Write-Host "Release asset: $($_.FullName)" }
-
-      - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: dist/*.exe
-          generate_release_notes: true
+          Write-Host "AMP Lab repository initialized successfully."
+          Write-Host "Automatic EXE publishing will be enabled after the actual source/build files are added."
+          Write-Host "Expected final flow: tag vX.Y.Z -> Windows build -> GitHub Release -> EXE asset."
