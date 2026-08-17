@@ -9,6 +9,15 @@ amp_lab_runtime_snapshot.json
 amp_lab_app_sync.json
 amp_lab_bridge_status.json
 
+# Third-party / local mod data
+*.pak
+data/raw/
+third_party/
+
+# Large local source datasets (do not publish by accident)
+ampis_full_details*.json
+AMP Items & Shards*.xlsx
+
 # Logs / temp
 *.log
 *.tmp
