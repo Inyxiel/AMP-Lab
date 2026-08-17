@@ -16,10 +16,10 @@ jobs:
       - name: Verify version baseline
         shell: bash
         run: |
-          test "$(tr -d '\r\n' < VERSION)" = "7.3.5"
+          test "$(tr -d '\r\n' < VERSION)" = "7.4.8"
 
       - name: Validate recovery tool syntax
-        run: python -m py_compile tools/extract_v735_frontend.py
+        run: python -m py_compile tools/extract_v748_frontend.py
 
       - name: Reject private or third-party development inputs
         shell: bash
@@ -34,4 +34,10 @@ jobs:
       - name: Verify baseline checksum declaration
         shell: bash
         run: |
-          grep -q '2b7f75480c27072c9447624aa6356c9cc217f922cc818b95a20766e188c2ae5c  AMP20Lab_v7.3.5_Tooltip-Restore-Fix.exe' checksums/SHA256SUMS.txt
+          grep -q 'b4367fc3ab6c46123c31b19d2f795e5b765e079179d618b954dcc19ca1ccd571  AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe' checksums/SHA256SUMS.txt
+
+      - name: Ensure obsolete v7.3.5 recovery files are gone
+        shell: bash
+        run: |
+          test ! -e tools/extract_v735_frontend.py
+          test ! -e docs/V7.3.5_BASELINE.md
