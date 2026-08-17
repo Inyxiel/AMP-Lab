@@ -1,8 +1,8 @@
 name: Publish Windows Release
 
-# Automatic tag publishing will be enabled once the real AMP Lab source/build command
-# is added to this repository. For now this workflow is manual-only so tags cannot
-# accidentally trigger a broken release.
+# v7.3.5 is the only accepted baseline for this repository.
+# Automatic EXE building is intentionally disabled until the v7.3.5 Go backend
+# has been reconstructed and validated. Do not substitute older source snapshots.
 on:
   workflow_dispatch:
 
@@ -10,16 +10,18 @@ permissions:
   contents: write
 
 jobs:
-  release:
+  release-readiness:
     runs-on: windows-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Source/build setup required
+      - name: Confirm current baseline
         shell: pwsh
         run: |
-          Write-Host "AMP Lab repository initialized successfully."
-          Write-Host "Automatic EXE publishing will be enabled after the actual source/build files are added."
-          Write-Host "Expected final flow: tag vX.Y.Z -> Windows build -> GitHub Release -> EXE asset."
+          $version = (Get-Content VERSION -Raw).Trim()
+          if ($version -ne "7.3.5") {
+            throw "Unexpected AMP Lab baseline: $version"
+          }
+          Write-Host "AMP Lab baseline: v$version Tooltip Restore Fix"
+          Write-Host "Automatic EXE build/release remains disabled until the v7.3.5 backend is reproducible."
