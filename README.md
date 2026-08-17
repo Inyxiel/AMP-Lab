@@ -26,7 +26,7 @@ Stable Windows builds are published through GitHub Releases. The current public 
 
 ## Credits & Acknowledgements
 
-AMP Lab is an independent community project and is not an official project of the mod creators it supports.
+AMP Lab is an independent community project and is not an official project of the mod creators or community resources it supports.
 
 Special thanks and full credit to:
 
@@ -34,8 +34,9 @@ Special thanks and full credit to:
 - **Paramonov** — Ancient Mega Pack Plus (AMP+)
 - **Paramonov** — Ancient Mega Pack + DnD 5.5e BEYOND compatibility patch
 - **Yoonmoonsik** — DnD 5.5e All-in-One BEYOND
+- **Tazliel** — AMPIS item database / reference resource
 
-AMP Lab does not claim ownership of their mods, assets, data, item designs, or ruleset implementations. See [CREDITS.md](CREDITS.md) for full attribution and links to the original projects.
+AMP Lab does not claim ownership of their mods, assets, databases, data, item designs, or ruleset implementations. See [CREDITS.md](CREDITS.md) for full attribution and links to the original projects.
 
 ## Third-party data
 
