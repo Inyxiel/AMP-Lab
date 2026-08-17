@@ -1,0 +1,10 @@
+* text=auto
+
+*.exe binary
+*.dll binary
+*.pak binary
+*.zip binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
