@@ -1,0 +1,32 @@
+# Secrets / local configuration
+.env
+.env.*
+!.env.example
+
+# Local runtime / save data
+*.lsv
+amp_lab_runtime_snapshot.json
+amp_lab_app_sync.json
+amp_lab_bridge_status.json
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# Build output
+build/
+dist/
+
+# Node / Python common local dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
