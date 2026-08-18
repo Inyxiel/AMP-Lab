@@ -1,4 +1,4 @@
-name: Validate AMP Lab Baseline
+name: Validate AMP Lab Repository
 
 on:
   push:
@@ -13,12 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Verify version baseline
+      - name: Verify current version
         shell: bash
         run: |
-          test "$(tr -d '\r\n' < VERSION)" = "7.4.8"
+          test "$(tr -d '\r\n' < VERSION)" = "8.0.0"
 
-      - name: Validate recovery tool syntax
+      - name: Validate legacy recovery tool syntax
         run: python -m py_compile tools/extract_v748_frontend.py
 
       - name: Reject private or third-party development inputs
@@ -31,7 +31,12 @@ jobs:
             exit 1
           fi
 
-      - name: Verify baseline checksum declaration
+      - name: Verify v8.0.0 release checksum declaration
+        shell: bash
+        run: |
+          grep -q '^bee3bd10c42dc0d3f5019471bf6aaecd12e9f470755f87bdb840cdf90f36d556  AMP_Lab_v8.0.0.exe$' checksums/AMP_Lab_v8.0.0.sha256
+
+      - name: Preserve verified v7.4.8 recovery baseline declaration
         shell: bash
         run: |
           grep -q 'b4367fc3ab6c46123c31b19d2f795e5b765e079179d618b954dcc19ca1ccd571  AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe' checksums/SHA256SUMS.txt
