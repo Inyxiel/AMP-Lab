@@ -1,27 +1,77 @@
 name: Publish Windows Release
 
-# v7.4.8 is the only accepted baseline for this repository.
-# Automatic EXE building is intentionally disabled until the v7.4.8 Go backend
-# has been reconstructed and validated. Do not substitute older source snapshots.
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - 'release-payload/**'
 
 permissions:
   contents: write
 
 jobs:
-  release-readiness:
-    runs-on: windows-latest
+  publish:
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout release payload
         uses: actions/checkout@v4
 
-      - name: Confirm current baseline
-        shell: pwsh
+      - name: Check whether payload is complete
+        id: payload
+        shell: bash
         run: |
-          $version = (Get-Content VERSION -Raw).Trim()
-          if ($version -ne "7.4.8") {
-            throw "Unexpected AMP Lab baseline: $version"
-          }
-          Write-Host "AMP Lab baseline: v$version Raw Arsenal / Direct Shards"
-          Write-Host "Automatic EXE build/release remains disabled until the v7.4.8 backend is reproducible."
+          if [[ -f release_payload/READY ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "Release payload is not complete yet; nothing to publish."
+          fi
+
+      - name: Install zstd
+        if: steps.payload.outputs.ready == 'true'
+        run: sudo apt-get update && sudo apt-get install -y zstd
+
+      - name: Download verified v7.4.8 base
+        if: steps.payload.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          mkdir -p base
+          gh release download v7.4.8 \
+            --pattern 'AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe' \
+            --dir base
+          echo 'b4367fc3ab6c46123c31b19d2f795e5b765e079179d618b954dcc19ca1ccd571  base/AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe' | sha256sum -c -
+
+      - name: Reconstruct AMP Lab v8.0.0
+        if: steps.payload.outputs.ready == 'true'
+        shell: bash
+        run: |
+          : > release_payload/v8.patch.zst
+          for f in release_payload/patch.part*.b64; do
+            base64 --decode "$f" >> release_payload/v8.patch.zst
+          done
+          zstd -d \
+            --patch-from=base/AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe \
+            release_payload/v8.patch.zst \
+            -o AMP_Lab_v8.0.0.exe
+          echo 'bee3bd10c42dc0d3f5019471bf6aaecd12e9f470755f87bdb840cdf90f36d556  AMP_Lab_v8.0.0.exe' | sha256sum -c -
+          test "$(stat -c %s AMP_Lab_v8.0.0.exe)" = '62683648'
+
+      - name: Publish GitHub Release
+        if: steps.payload.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          gh release create v8.0.0 AMP_Lab_v8.0.0.exe \
+            --repo "$GITHUB_REPOSITORY" \
+            --target main \
+            --title 'AMP Lab v8.0.0' \
+            --notes-file docs/RELEASE_NOTES_v8.0.0.md \
+            --latest
+
+      - name: Remove temporary payload branch
+        if: steps.payload.outputs.ready == 'true' && success()
+        shell: bash
+        run: git push origin --delete "$GITHUB_REF_NAME"
