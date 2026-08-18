@@ -2,27 +2,38 @@
 
 Baldur's Gate 3 build and inventory optimizer focused on real party/inventory data, item synergies, class/subclass recommendations, and modded rulesets.
 
-## Current baseline
+## Current release
 
-**AMP Lab v7.4.8 — Raw Arsenal / Direct Shards**
+**AMP Lab v8.0.0 — Party Forge / Archetypes / Respec Opportunities**
 
-This repository is intentionally based only on the current v7.4.8 Windows executable. Older source snapshots are not being mixed into this codebase.
+v8.0.0 moves AMP Lab to the Phase 8 optimizer/runtime line while keeping the verified Phase 6J physical-item allocation core intact. The Windows release reads real BG3 `.lsv` saves directly and presents the optimizer through the new BG3-inspired interface.
 
 Current verified binary:
 
-- File: `AMP20Lab_v7.4.8_Raw-Arsenal-Direct-Shards.exe`
-- SHA-256: `b4367fc3ab6c46123c31b19d2f795e5b765e079179d618b954dcc19ca1ccd571`
-- Size: `36,457,984` bytes
+- File: `AMP_Lab_v8.0.0.exe`
+- SHA-256: `bee3bd10c42dc0d3f5019471bf6aaecd12e9f470755f87bdb840cdf90f36d556`
+- Size: `62,683,648` bytes
 
-## Recovery status
+## v8 highlights
 
-The v7.4.8 executable contains recoverable embedded frontend resources. The recovery tooling in this repository extracts the exact embedded HTML and gzip/base64 JavaScript payload from that binary.
+- **Party Forge** — optimized four-character equipment allocation using owned physical item instances.
+- **Respec Opportunities** — validates legal class/subclass/multiclass alternatives against the real inventory; `KEEP CURRENT` stays compact and equipment is shown only for actual respec recommendations.
+- **Archetypes** — inventory-supported archetype readiness, tiers, available mechanics, missing mechanics, supporting items, subclass fit, and best available builds.
+- **Synergies** — item-to-item synergy chains with player-facing explanations of why the pieces work together.
+- **Arsenal** — unused owned gear, alternative synergy directions, future Orb pieces, and human-readable compatibility guidance.
+- **Shards** — canonical shard recommendations with clearer AMP recommendation presentation.
+- **Data Sources** — AMP, AMP+, D&D 5.5e and compatibility source status/management.
+- **Dark / Light themes** — including the v8 light-theme contrast QA pass.
 
-The original Go source code is **not** embedded as source text in the compiled executable, so a reproducible automatic Windows build is not enabled yet. We will not substitute older source code just to make the build appear reproducible.
+## Known UI limitation
 
-## Releases
+Some items may still display a generic slot symbol when a packaged/local item icon is unavailable. This is a presentation limitation only; it does not change item identity, optimizer scoring, allocation, mechanics, or recommendations.
 
-Stable Windows builds are published through GitHub Releases. The repository baseline is now **v7.4.8 — Raw Arsenal / Direct Shards**.
+When the current save does not expose a complete equipped-item baseline, Party Forge shows **SAVE BASELINE INCOMPLETE** rather than inventing an inaccurate `% vs save` value.
+
+## Release model
+
+Stable Windows builds are distributed through GitHub Releases. The repository tracks release metadata, checksums, documentation and recovery/validation tooling. Large third-party source inputs, saves and runtime snapshots are not committed.
 
 ## Free project & supporting the creators
 
