@@ -1,0 +1,24 @@
+{
+  "schema": "amp-respec-step3-v2-validation-1",
+  "status": "PASS",
+  "passed": 13,
+  "total": 13,
+  "checks": {
+    "base_exe_hash_frozen": true,
+    "js_syntax_checked": true,
+    "synthetic_exact_state_test_passed": true,
+    "save91_input_100071": true,
+    "save91_retained_43063": true,
+    "exact_equivalence_rejects_43739": true,
+    "safe_dominance_rejects_13269": true,
+    "all_119_singleclasses_preserved": true,
+    "no_top_n": true,
+    "no_random_sampling": true,
+    "no_capability_superset_dominance": true,
+    "drop_in_filter_api": true,
+    "owned_demand_projection": true
+  },
+  "base_exe_sha256": "4f6ccd0abd9068f35ec6b621caa9c2db703a53d0be362d0626de18e238d9edcf",
+  "candidate_filter_v2_sha256": "9a4c37a43f8db6bc38595326597dba4523ef81da8c615a5981770379c7530ec3",
+  "save91_audit_sha256": "5d0f4e3be8af0279175bed1f11e47123609679f3b5ba81da754764239f52bd7c"
+}
