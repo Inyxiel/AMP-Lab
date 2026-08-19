@@ -1,0 +1,19 @@
+{
+  "schema": "amp-respec-step3-validation-v1",
+  "status": "PASS",
+  "passed": 11,
+  "total": 11,
+  "checks": [
+    {"check":"canonical_base_hash","status":"PASS","detail":"4f6ccd0abd9068f35ec6b621caa9c2db703a53d0be362d0626de18e238d9edcf"},
+    {"check":"classes_16","status":"PASS","detail":"16"},
+    {"check":"subclasses_119","status":"PASS","detail":"119"},
+    {"check":"ordered_rows_2640","status":"PASS","detail":"2640"},
+    {"check":"structural_count_99952","status":"PASS","detail":"99952"},
+    {"check":"same_class_excluded","status":"PASS","detail":"all ordered rows use distinct classes"},
+    {"check":"levels_sum_12","status":"PASS","detail":"all L12 splits sum to 12"},
+    {"check":"breakpoints_all_classes","status":"PASS","detail":"16/16 classes indexed"},
+    {"check":"filter_has_audit_reasons","status":"PASS","detail":"machine-readable rejection reasons present"},
+    {"check":"no_top3_or_top6","status":"PASS","detail":"old shortlist heuristic absent"},
+    {"check":"current_control_preserved","status":"PASS","detail":"current path bypasses contextual rejection"}
+  ]
+}
