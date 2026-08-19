@@ -1,0 +1,16 @@
+{
+  "schema": "amp-respec-step3-canonical-filter-v1",
+  "pipeline": ["LEGAL","RELEVANT","EFFICIENT","INVENTORY_SUPPORTED"],
+  "principles": [
+    "No top-N subclass/component heuristic before canonical filtering.",
+    "Current path is always retained as a control candidate.",
+    "Every rejection carries machine-readable reason codes.",
+    "Inventory support is evaluated from owned item mechanics/orbs, not only currently equipped gear.",
+    "Selectable capability matches are weaker than guaranteed matches.",
+    "Efficiency pruning may remove dominated level splits but must preserve material breakpoints."
+  ],
+  "legal": {"max_level":12,"class_count":16,"same_class_multiclass":false,"subclass_rule":"unlock_level <= component class level","entry_order":["primary","multiclass"]},
+  "relevant": {"signals":["owned_orb_matrix_fit","owned_item_requirement_match","owned_item_proficiency_legality","high_value_capability","spell_trigger_slot_access"],"pass_rule":"current OR any inventory/orb support OR material high-value capability with nonzero owned-item intersection","note":"RELEVANT is contextual; static catalog stores features, runtime supplies owned inventory."},
+  "efficient": {"dominance_key":["ordered class pair","identity pair","inventory support signature"],"prefer":["more guaranteed requirement matches","higher proficiency legality","material breakpoint","better spell access","fewer dead 1-level dips"],"dead_dip_rule":"1-level component with no unique owned requirement, proficiency, high-value capability, or spell contribution is dominated","breakpoint_source":"frozen capability graph; union material signature change by class/entry mode"},
+  "inventory_supported": {"required_runtime_inputs":["owned item profiles/payoffs","owned orb families+tiers","matrix rows","character level"],"support_weights":{"guaranteed_requirement":3.0,"selectable_requirement":1.0,"legal_proficiency":1.0,"orb_fit_positive":1.0,"high_value_capability":0.25,"spell_trigger_access":0.5},"minimum":"support_score > 0, except current/control candidate"}
+}
