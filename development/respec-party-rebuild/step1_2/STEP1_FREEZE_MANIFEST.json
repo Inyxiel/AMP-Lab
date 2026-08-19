@@ -1,0 +1,20 @@
+{
+  "schema": "amp-respec-step1-freeze-v1",
+  "status": "PASS",
+  "canonical_exe": "AMP_Lab_v8.0.0_BENCHMARK_FAIRNESS_FIX.exe",
+  "canonical_exe_bytes": 87361536,
+  "canonical_exe_sha256": "4f6ccd0abd9068f35ec6b621caa9c2db703a53d0be362d0626de18e238d9edcf",
+  "step5_audit_zip_sha256": "8111302a746165f415956a6e04f24b7fc0652c4a75d65b7ca2254125f6eeca73",
+  "frozen_resources": {
+    "v8_coach": {"start":14761728,"bytes":26893,"sha256":"96749d16a91b33265c1698786ab1f7e82dce35ce7d923c7b89091c084c503828"},
+    "v8_solver": {"start":14827200,"bytes":42124,"sha256":"a8f6cb36b30f48bd0e3f495d9c44bac47c1791f805f9c8a68b8a22eb847b9ea9"},
+    "capability_graph": {"start":17119320,"bytes":1696510,"sha256":"ac2ced95711efc2635e70aedf425f0d347ac4d0c43e5678990dd399f7aaeaa1c","version":"v8-capability-delta-1"},
+    "spellcasting_progression_version": "phase8b3-source-spellcasting-closure-1"
+  },
+  "fairness_ranges": [
+    {"name":"benchmark_ui_fairness_patch_range","start":14728812,"end":14744747,"bytes":15935,"sha256":"c900984f3369dbeb1c4b28228d41951ef86e8084d8c8b1255ac5fdde9e7a45b0"},
+    {"name":"benchmark_data_fairness_patch_range","start":15997795,"end":17119320,"bytes":1121525,"sha256":"8b8c44e4c5180215809221b9b3bec4a18237b1cb45dd5b6273772fa744b8d1fc"}
+  ],
+  "contracts": {"normal_forge":"FROZEN_UNCHANGED","benchmark_fairness":"FROZEN_UNCHANGED","respec_override":"OPT_IN_ONLY","final_allocator":"EXISTING_GLOBAL_ALLOCATE","save_mutation":"NONE"},
+  "counts": {"classes":16,"subclasses":119,"identities":135}
+}
