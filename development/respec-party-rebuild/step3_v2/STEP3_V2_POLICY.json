@@ -1,0 +1,19 @@
+{
+  "schema": "amp-respec-step3-v2-policy-1",
+  "version": "amp-respec-step3-concrete-dominance-v2",
+  "pipeline": ["LEGAL","RELEVANT","EFFICIENT","INVENTORY_SUPPORTED"],
+  "principles": {
+    "no_arbitrary_top_n": true,
+    "no_percentile_cutoff": true,
+    "no_random_sampling": true,
+    "current_candidate_is_never_dropped_by_dominance": true,
+    "singleclass_candidates_are_preserved": true,
+    "runtime_demand_is_derived_from_owned_equippable_items_and_owned_orb_rows": true,
+    "capabilities_are_projected_only_to_requirements_the_frozen_solver_can_query": true,
+    "exact_equivalence_uses_frozen_matrix_behavior_plus_projected_solver_state": true,
+    "dominance_requires_identical_projected_mechanics_and_identical_path_structure": true,
+    "capability_superset_dominance_is_forbidden": true
+  },
+  "why_superset_dominance_is_forbidden": "The frozen Forge can award completion-item core bonuses when an item closes a missing path requirement. Therefore simply having more guaranteed capabilities is not provably monotonic in the current solver and is not used as a prune rule.",
+  "next_runtime_gate": "Step 6B should cache the unchanged three party members and screen the retained candidate frontier before full allocate() validation of finalists."
+}
