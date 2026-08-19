@@ -1,0 +1,20 @@
+{
+  "schema": "amp-respec-step1-step2-validation-v1",
+  "status": "PASS",
+  "checks": [
+    {"name":"canonical EXE hash matches Step5 audit","pass":true},
+    {"name":"coach hash matches Step5 proven hash","pass":true},
+    {"name":"solver hash matches Step5 proven hash","pass":true},
+    {"name":"capability graph has 16 classes","pass":true},
+    {"name":"capability graph has 119 subclasses","pass":true},
+    {"name":"capability graph has 135 identities","pass":true},
+    {"name":"spellcasting closure present","pass":true},
+    {"name":"all Step2 component records resolve","pass":true},
+    {"name":"Step2 contains no relevance/efficiency pruning","pass":true}
+  ],
+  "structural_candidate_counts_by_level": {"2":300,"3":600,"4":4286,"5":7972,"6":21112,"7":34252,"8":47392,"9":60532,"10":73672,"11":86812,"12":99952},
+  "step2_sha256": "baf069cf6a62cb9d272c00a1b2d65064678b17604abc5e8ff6de2dde0e58d33e",
+  "step2_bytes": 20209331,
+  "passed": 9,
+  "total": 9
+}
