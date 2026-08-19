@@ -1,0 +1,20 @@
+{
+  "schema": "amp-respec-step4-validation-v1",
+  "status": "PASS",
+  "passed": 12,
+  "total": 12,
+  "checks": [
+    {"check":"step2_status","status":"PASS","detail":"PASS"},
+    {"check":"classes_16","status":"PASS","detail":"16"},
+    {"check":"source_identities_135","status":"PASS","detail":"135"},
+    {"check":"structural_profile_identities_133","status":"PASS","detail":"133"},
+    {"check":"component_keys_384","status":"PASS","detail":"384"},
+    {"check":"level12_exact_99952","status":"PASS","detail":"99952"},
+    {"check":"all_split_counts_exact","status":"PASS","detail":"all row candidate_count values reproduced exactly"},
+    {"check":"stable_numeric_ids","status":"PASS","detail":"numeric table references"},
+    {"check":"split_range_index","status":"PASS","detail":"15840"},
+    {"check":"step3_policy_bound","status":"PASS","detail":"f6628c6f675ce403af08c07b1a2f03b586de83b8e0cd981f7970787520afe4c8"},
+    {"check":"no_capability_duplication","status":"PASS","detail":"catalog rows reference Step2 components"},
+    {"check":"forge_untouched","status":"PASS","detail":"standalone data/helper package only"}
+  ]
+}
